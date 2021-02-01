@@ -11,6 +11,7 @@ from gtts import gTTS
 chdir('Data')
 
 # global variables -----------------------
+audio_file = 'Audio.wav'
 filename = 'Data_file.csv'
 video_capture = cv2.VideoCapture(0)
 face_locations = []
@@ -96,9 +97,9 @@ while True:
 					gTTS(
 						text=f"Welcome home {name}! it's, {time}.",
 						lang= 'hi' #you can change the language from here
-					).save('Audio.wav')
+					).save(audio_file)
 
-					system('mpg123 -q Audio.wav')
+					system(f'mpg123 -q {audio_file}')
 
 			face_names.append(name)
 			
@@ -129,7 +130,7 @@ while True:
 		break
 
 # Remove audio file
-try:remove('Audio.wav')
+try:remove(audio_file)
 except:pass
 
 # Release handle to the webcam
